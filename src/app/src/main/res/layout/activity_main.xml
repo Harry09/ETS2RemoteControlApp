@@ -5,7 +5,152 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"
+    android:keepScreenOn="true"
     tools:context="com.piotr.ets2remotecontrol.MainActivity">
 
+    <android.widget.VerticalSeekBar
+        android:id="@+id/engineSeekBar"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/engineButton"
+        app:layout_constraintRight_toLeftOf="@+id/brakeSeekBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <android.widget.VerticalSeekBar
+        android:id="@+id/brakeSeekBar"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/brakeButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <android.widget.VerticalSeekBar
+        android:id="@+id/gearSeekBar"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="0dp"
+        android:max="2"
+        android:progress="1"
+        app:layout_constraintBottom_toTopOf="@+id/brakeButton"
+        app:layout_constraintRight_toLeftOf="@+id/engineSeekBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <SeekBar
+        android:id="@+id/wheelSeekBar"
+        android:layout_width="352dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="8dp"
+        android:max="@integer/seekBarMaxValue"
+        android:progress="250"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/gearSeekBar"
+        />
+
+    <ToggleButton
+        android:id="@+id/engineButton"
+        android:layout_width="50dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="236dp"
+        android:checked="false"
+        android:onClick="engineButton_onClick"
+        android:textOff="0"
+        android:textOn="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/brakeButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteY="205dp"/>
+
+    <ToggleButton
+        android:id="@+id/brakeButton"
+        android:layout_width="50dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginRight="16dp"
+        android:checked="false"
+        android:onClick="brakeButton_onClick"
+        android:textOff="0"
+        android:textOn="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="182dp"/>
+
+    <SeekBar
+        android:id="@+id/cameraSeekBar"
+        android:layout_width="352dp"
+        android:layout_height="107dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        android:max="500"
+        android:progress="250"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/gearSeekBar"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="D"
+        android:textColor="@android:color/black"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/cameraSeekBar"
+        app:layout_constraintRight_toLeftOf="@+id/gearSeekBar"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="N"
+        android:textColor="@android:color/black"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/cameraSeekBar"
+        app:layout_constraintRight_toLeftOf="@+id/gearSeekBar"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="R"
+        android:textColor="@android:color/black"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/wheelSeekBar"
+        app:layout_constraintRight_toLeftOf="@+id/gearSeekBar"
+        app:layout_constraintBottom_toTopOf="@+id/engineButton"/>
 
 </android.support.constraint.ConstraintLayout>
